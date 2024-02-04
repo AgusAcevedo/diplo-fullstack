@@ -1,0 +1,39 @@
+.services {
+    text-align: center;
+    padding: 20px;
+}
+
+.service-cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; /* This will allow the cards to wrap to the next line if there's not enough space */
+}
+
+.service-card {
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.service-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.service-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.service-card h2 {
+    margin: 20px 0;
+}
+
+.service-card p {
+    text-align: left;
+}

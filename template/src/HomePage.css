@@ -1,0 +1,23 @@
+.home {
+    text-align: center;
+}
+
+.home-header {
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+.home-main {
+    padding: 20px;
+}
+
+.home-categories {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.home-category {
+    width: 150px;
+}
+
