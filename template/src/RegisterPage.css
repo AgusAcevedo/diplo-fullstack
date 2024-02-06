@@ -1,0 +1,46 @@
+.register-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 50px;
+    height: calc(80vh - 50px);
+    background-color: #BBE1FA;
+}
+
+.register-page h1 {
+    margin-bottom: 20px;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color: #1B262C;
+    color: #BBE1FA;
+}
+
+.register-form input {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0F4C75;
+    color: #BBE1FA;
+}
+
+.register-button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3282B8;
+    color: #BBE1FA;
+    cursor: pointer;
+}
+
+.register-button:hover {
+    background-color: #BBE1FA;
+    color: #1B262C;
+}
