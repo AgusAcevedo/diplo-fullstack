@@ -21,3 +21,21 @@
     width: 150px;
 }
 
+.carouselagus {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+}
+
+.carousel-itemagus {
+    flex: 0 0 auto;
+    width: 200px;
+    height: 100px;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
+
+.logos img {
+    margin: 0 40px;
+}

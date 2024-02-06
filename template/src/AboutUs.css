@@ -1,22 +1,67 @@
-.about-us {
+.about-usagus {
     text-align: center;
     padding: 20px;
+    background-color: #BBE1FA;
+    color: #1B262C;
 }
 
-.company-info, .staff-info {
+.company-infoagus, .staff-infoagus, .history {
     margin-bottom: 20px;
+    color: #0F4C75;
 }
 
-.staff-cards {
+.staff-cardsagus {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap; /* This will allow the cards to wrap to the next line if there's not enough space */
 }
 
-.staff-card {
-    width: 150px;
-    border: 1px solid #ccc;
+.staff-cardagus {
+    width: 200px;
+    border: 1px solid #3282B8;
     border-radius: 10px;
     padding: 10px;
     margin: 10px;
+    background-color: #1B262C;
+    color: #BBE1FA;
+}
+
+.staff-cardagus img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.timeline {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background-color: #1B262C;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
+}
+
+.event {
+    padding: 20px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+}
+
+.event:nth-child(odd) {
+    left: 0;
+}
+
+.event:nth-child(even) {
+    left: 50%;
 }

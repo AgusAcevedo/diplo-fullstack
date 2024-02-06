@@ -38,8 +38,22 @@
 }
 
 .home-footer {
-  background-color: #f8f9fa;
+  background-color: #1B262C;
+  color: #BBE1FA;
   padding: 20px;
   flex-shrink: 0;
   text-align: center; 
+}
+
+#root {
+  background-color: #BBE1FA;
+}
+
+.section-divider {
+  border: 0;
+  height: 3px; /* Adjust this to make the line thicker or thinner */
+  background-color: #3282B8; /* Use this color for the line */
+  margin: 50px auto; /* Center the line */
+  width: 70%; /* Adjust this to change the line width */
+  border-radius: 50px;
 }

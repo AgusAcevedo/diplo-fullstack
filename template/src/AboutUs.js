@@ -32,8 +32,8 @@ const staffMembers = [
 
 const AboutUsPage = () => {
     return (
-        <div className="about-us">
-            <section className="company-info">
+        <div className="about-usagus">
+            <section className="company-infoagus">
                 <h1>Sobre nosotros</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
                     eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -44,16 +44,39 @@ const AboutUsPage = () => {
                     culpa qui officia deserunt mollit anim id est laborum.</p>
             </section>
 
-            <section className="staff-info">
+            <hr className="section-divider" />
+
+            <section className="staff-infoagus">
                 <h2>Nuestro equipo</h2>
-                <div className="staff-cards">
+                <div className="staff-cardsagus">
                     {staffMembers.map((member, index) => (
-                        <div className="staff-card" key={index}>
-                            <img src={member.imgSrc} alt={member.name} />
+                        <div className="staff-cardagus" key={index}>
+                            <img className="staff-picagus" src={member.imgSrc} alt={member.name} />
                             <h3>{member.name}</h3>
                             <p>{member.info}</p>
                         </div>
                     ))}
+                </div>
+            </section>
+            
+            <hr className="section-divider" />
+
+            <section className="history">
+                <h2>Nuestra Historia</h2>
+                <div className="timeline">
+                    <div className="event">
+                        <h3>1990</h3>
+                        <p>Company was founded.</p>
+                    </div>
+                    <div className="event">
+                        <h3>2000</h3>
+                        <p>Reached our first 1000 customers.</p>
+                    </div>
+                    <div className="event">
+                        <h3>2010</h3>
+                        <p>Expanded our services worldwide.</p>
+                    </div>
+                    {/* Add more events as needed */}
                 </div>
             </section>
         </div>
