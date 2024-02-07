@@ -7,6 +7,7 @@ import AboutUsPage from './AboutUs';
 import ServicesPage from './Services';
 import LoginPage from './LoginPage';
 import RegisterPage from './RegisterPage';
+import ContactPage from './ContactPage';
 import NovedadesPage from './NovedadesPage';
 import { AuthProvider, useAuth } from './AuthProvider';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -24,6 +25,7 @@ function App() {
           <Route path="/servicios" element={<ServicesPage />} />
           <Route path="/novedades" element={<PrivateRoute><NovedadesPage /></PrivateRoute>} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/contacto" element={<ContactPage />} />
         </Routes>
         <footer className="home-footer">
           <p>© 2024 Agustin Acevedo</p>

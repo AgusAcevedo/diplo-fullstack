@@ -158,6 +158,27 @@ app.post('/register', (req, res) => {
     });
   });
 
+
+  app.post('/contact', (req, res) => {
+    const { name, email, message } = req.body;
+  
+    let mailOptions = {
+      from: 'pruebitapruebita81@gmail.com', // sender address
+      to: 'pruebitapruebita81@gmail.com', // your email address
+      subject: 'New message from contact form', // Subject line
+      text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`, // plain text body
+    };
+  
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.log(error);
+        return res.status(500).json({ success: false, message: 'Server error' });
+      } else {
+        console.log('Email sent: ' + info.response);
+        return res.json({ success: true });
+      }
+    });
+  });
 app.listen(8000, () => {
   console.log('Server started on port 8000');
 });
