@@ -100,10 +100,61 @@ app.post('/register', (req, res) => {
         return;
       }
       if (results.length > 0) {
+        console.log('User:', results);
         res.json({ success: true, user: results[0] });
       } else {
         res.json({ success: false, message: 'No user found' });
       }
+    });
+  });
+
+  app.get('/novedades', (req, res) => {
+    const query = 'SELECT * FROM Novedades';
+    db.query(query, (err, results) => {
+      if (err) {
+        console.error('Database query error:', err);
+        res.status(500).json({ success: false, message: 'Server error' });
+        return;
+      }
+      console.log('Novedades:', results);
+      res.json(results);
+    });
+  });
+
+  app.post('/novedades', (req, res) => {
+    const { titulo, subtitulo, cuerpo } = req.body;
+    const query = 'INSERT INTO Novedades (titulo, subtitulo, cuerpo) VALUES (?, ?, ?)';
+    db.query(query, [titulo, subtitulo, cuerpo], (err, result) => {
+      if (err) {
+        res.status(500).json({ success: false, message: 'Server error' });
+        return;
+      }
+      res.json({ success: true, message: 'Novedad added' });
+    });
+  });
+  
+  app.delete('/novedades/:id', (req, res) => {
+    const { id } = req.params;
+    const query = 'DELETE FROM Novedades WHERE id = ?';
+    db.query(query, id, (err, result) => {
+      if (err) {
+        res.status(500).json({ success: false, message: 'Server error' });
+        return;
+      }
+      res.json({ success: true, message: 'Novedad deleted' });
+    });
+  });
+  
+  app.put('/novedades/:id', (req, res) => {
+    const { id } = req.params;
+    const { titulo, subtitulo, cuerpo } = req.body;
+    const query = 'UPDATE Novedades SET titulo = ?, subtitulo = ?, cuerpo = ? WHERE id = ?';
+    db.query(query, [titulo, subtitulo, cuerpo, id], (err, result) => {
+      if (err) {
+        res.status(500).json({ success: false, message: 'Server error' });
+        return;
+      }
+      res.json({ success: true, message: 'Novedad updated' });
     });
   });
 

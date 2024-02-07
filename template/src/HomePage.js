@@ -53,7 +53,7 @@ const HomePage = () => {
                 <hr className="section-divider" />
 
                 <section className="home-section">
-                    <h2>Empresas Partners</h2>
+                    <h2>Partners</h2>
                     <div className="logos">
                         <img src="https://via.placeholder.com/150" alt="Company 1" />
                         <img src="https://via.placeholder.com/150" alt="Company 2" />
