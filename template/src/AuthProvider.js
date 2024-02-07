@@ -14,18 +14,19 @@ export function AuthProvider({ children }) {
   
   const login = async (username, password) => {
     try {
+      setError(null);
       const response = await axios.post('http://localhost:8000/login', { username, password });
       if (response.data.success) {
         const userResponse = await axios.get('http://localhost:8000/user', { params: { username } });
         setUser(userResponse.data);
         setIsLoggedIn(true);
-        return true; // Return true if the login was successful
+        return true; 
       } else {
         setError('Login failed');
-        return false; // Return false if the login failed
+        return false; 
       }
     } catch (error) {
-        console.error('Error details:', error); // Log the error object
+        console.error('Error details:', error); 
         setError('An error occurred while logging in');
         return false;
       }
@@ -34,9 +35,9 @@ export function AuthProvider({ children }) {
 const register = async (username, password, email) => {
     try {
       const response = await axios.post('http://localhost:8000/register', { username, password, email });
-      // Handle the response
+      setError(null);
     } catch (error) {
-      // Handle the error
+      //console.error('Error details:', error);
     }
   };
 
@@ -46,6 +47,7 @@ const register = async (username, password, email) => {
       console.log('Deleting user:', user.username);
       const response = await axios.delete('http://localhost:8000/deleteUser', { data: { username: user.user.username } });
       console.log('Server response:', response.data);
+      setError(null);
       setUser(null);
       setIsLoggedIn(false);
     } catch (error) {
@@ -54,11 +56,7 @@ const register = async (username, password, email) => {
   };
 
   const logout = () => {
-    // Clear the user's session or authentication token
-    // This depends on how you're handling authentication
-    // For example, you might clear a token from localStorage or a cookie
-  
-    // Update the user and isLoggedIn states
+    setError(null);
     setUser(null);
     setIsLoggedIn(false);
   };

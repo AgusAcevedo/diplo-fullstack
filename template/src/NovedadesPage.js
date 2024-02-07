@@ -5,21 +5,19 @@ import './NovedadesPage.css';
 
 function NovedadesPage() {
   const { user, deleteUser } = useContext(AuthContext); // Access the current user's data and the deleteUser function
-  const [errorMessage, setErrorMessage] = useState('');
+  const [setErrorMessage] = useState(null);
   const navigate = useNavigate();
   const { logout } = useContext(AuthContext);
   const [novedades, setNovedades] = useState([]);
-  const [newNovedad, setNewNovedad] = useState({
-    titulo: '',
-    subtitulo: '',
-    cuerpo: '',
-  });
   const [showForm, setShowForm] = useState(false);
   const [titulo, setTitulo] = useState('');
   const [subtitulo, setSubtitulo] = useState('');
   const [cuerpo, setCuerpo] = useState('');
+  const [editingNovedad, setEditingNovedad] = useState(null);
+  const [editedTitulo, setEditedTitulo] = useState('');
+  const [editedSubtitulo, setEditedSubtitulo] = useState('');
+  const [editedCuerpo, setEditedCuerpo] = useState('');
 
-  console.log('User:', user);
 
   const fetchNovedades = async () => {
     try {
@@ -55,7 +53,7 @@ function NovedadesPage() {
       .then(data => {
         if (data.success) {
           console.log('Novedad added:', data.message);
-          setNovedades(prevNovedades => [...prevNovedades, { titulo, subtitulo, cuerpo }]);
+          setNovedades(prevNovedades => [{ titulo, subtitulo, cuerpo }, ...prevNovedades]);
         } else {
           console.error('Failed to add novedad:', data.message);
         }
@@ -88,6 +86,22 @@ function NovedadesPage() {
     }
   };
 
+  const startEditing = (novedad) => {
+    setEditingNovedad(novedad.id);
+    setEditedTitulo(novedad.titulo);
+    setEditedSubtitulo(novedad.subtitulo);
+    setEditedCuerpo(novedad.cuerpo);
+  };
+  
+  const confirmEdit = async () => {
+    await editNovedad(editingNovedad, {
+      titulo: editedTitulo,
+      subtitulo: editedSubtitulo,
+      cuerpo: editedCuerpo,
+    });
+    setEditingNovedad(null);
+  };
+
   useEffect(() => {
     fetchNovedades();
   }, []);
@@ -97,7 +111,7 @@ function NovedadesPage() {
     if (deleteSuccessful) {
       navigate('/login'); // Navigate to the login page
     } else {
-      setErrorMessage('Deletion failed'); // Display an error message
+  
     }
   };
   console.log(user.user.username);
@@ -118,16 +132,27 @@ function NovedadesPage() {
             <button onClick={confirmNovedad}>Confirm</button>
           </div>
         )}
-        {novedades.map(novedad => (
-          <div key={novedad.id} className="novedad">
-            <h2>{novedad.titulo}</h2>
-            <h3>{novedad.subtitulo}</h3>
-            <p>{novedad.cuerpo}</p>
-            {user && user.user && user.user.isAdmin === 1 && (
-              <div>
-                <button className="add-novedad-button" onClick={() => editNovedad(novedad.id)}>Edit Novedad</button>
-                <button className="add-novedad-button" onClick={() => deleteNovedad(novedad.id)}>Delete Novedad</button>
-              </div>
+        {novedades.map((novedad) => (
+          <div className="novedad" key={novedad.id}>
+            {editingNovedad === novedad.id ? (
+              <>
+                <input value={editedTitulo} onChange={(e) => setEditedTitulo(e.target.value)} />
+                <input value={editedSubtitulo} onChange={(e) => setEditedSubtitulo(e.target.value)} />
+                <input value={editedCuerpo} onChange={(e) => setEditedCuerpo(e.target.value)} />
+                <button onClick={confirmEdit}>Confirm</button>
+              </>
+            ) : (
+              <>
+                <h2>{novedad.titulo}</h2>
+                <h3>{novedad.subtitulo}</h3>
+                <p>{novedad.cuerpo}</p>
+                {user && user.user && user.user.isAdmin === 1 && (
+                  <div>
+                    <button className="add-novedad-button" onClick={() => startEditing(novedad)}>Edit</button>
+                    <button className="delete-button" onClick={() => deleteNovedad(novedad.id)}>Delete</button>
+                  </div>
+                )}
+               </>
             )}
           </div>
         ))}

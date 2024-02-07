@@ -109,7 +109,7 @@ app.post('/register', (req, res) => {
   });
 
   app.get('/novedades', (req, res) => {
-    const query = 'SELECT * FROM Novedades';
+    const query = 'SELECT * FROM Novedades ORDER BY id DESC';
     db.query(query, (err, results) => {
       if (err) {
         console.error('Database query error:', err);

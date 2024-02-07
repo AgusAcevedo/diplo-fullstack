@@ -10,14 +10,18 @@ function RegisterPage() {
   const [errorMessage, setErrorMessage] = useState('');
   const { register } = useAuth();
   const navigate = useNavigate();
+  const { login, error } = useAuth();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       await register(username, password, email);
-      navigate('/login'); // Navigate to the login page
+      const loginSuccessful = await login(username, password);
+      if (loginSuccessful) {
+        navigate('/novedades'); 
+      }
     } catch (error) {
-      setErrorMessage(error.message); // Display the error message
+      setErrorMessage(error.message); 
     }
   };
 

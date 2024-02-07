@@ -22,6 +22,8 @@
     margin-top: 10px;
     border-radius: 5px;
     cursor: pointer;
+    margin-right: 10px;
+    margin-bottom: 10px;
 }
 
 .logout-button:hover {
@@ -36,18 +38,24 @@
     margin-top: 10px;
     border-radius: 5px;
     cursor: pointer;
+    margin-right: 10px;
 }
 
 .delete-button:hover {
-    background-color: #FF4500; /* Darker red color on hover */
+    background-color: #FF4500;
 }
 
 .novedad {
-    border: 1px solid #ddd;
+    border: 2px solid #1B262C;
     border-radius: 10px;
+    background-color: #BBE1FA;
     padding: 20px;
     margin-bottom: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
   }
   
   .novedad h2 {
@@ -61,6 +69,27 @@
   
   .novedad p {
     color: #999;
+  }
+  
+  .novedad input,
+  .novedad textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .novedad button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .novedad button:hover {
+    background-color: #0056b3;
   }
 
   .novedad-form {
@@ -84,6 +113,7 @@
     background-color: #007BFF;
     color: white;
     cursor: pointer;
+    margin-right: 10px;
   }
   
   .novedad-form button:hover {

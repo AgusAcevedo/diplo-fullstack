@@ -16,10 +16,9 @@ function LoginPage() {
         event.preventDefault();
         const loginSuccessful = await login(username, password); // Wait for the login function to complete
         if (loginSuccessful) {
-          navigate('/novedades'); // Only navigate to '/novedades' if the login was successful
+          navigate('/novedades');
         }
       };
-
   return (
     <div className="login-page">
             <h1>Por favor inicie sesion primero</h1>
